@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:math_pet/features/game/presentation/pages/game_page.dart';
 
 class MathPetApp extends StatelessWidget {
   const MathPetApp({super.key});
@@ -11,11 +12,7 @@ class MathPetApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Scaffold(
-        body: Center(
-          child: Text('Welcome to MathPet!'),
-        ),
-      ),
+      home: const GamePage(),
     );
   }
 }
