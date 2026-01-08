@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:math_pet/features/game/presentation/bloc/interaction_state.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/interaction_state.dart';
 
 class InteractionCubit extends Cubit<InteractionState> {
   InteractionCubit() : super(const InteractionState());

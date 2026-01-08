@@ -6,12 +6,12 @@ import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:flame_bloc/flame_bloc.dart';
 import 'package:flutter/animation.dart';
-import 'package:math_pet/core/assets/asset_registry.dart';
-import 'package:math_pet/features/game/game/math_pet_game.dart';
-import 'package:math_pet/features/game/presentation/bloc/interaction_state.dart';
-import 'package:math_pet/features/game/presentation/bloc/pet_cubit.dart';
-import 'package:math_pet/features/game/presentation/bloc/pet_state.dart';
-import 'package:math_pet/features/math/presentation/dialogs/math_dialog.dart';
+import 'package:sum_buddy/core/assets/asset_registry.dart';
+import 'package:sum_buddy/features/game/game/sum_buddy_game.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/interaction_state.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/pet_cubit.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/pet_state.dart';
+import 'package:sum_buddy/features/math/presentation/dialogs/math_dialog.dart';
 
 /// The visual representation of the Pet.
 ///
@@ -19,7 +19,7 @@ import 'package:math_pet/features/math/presentation/dialogs/math_dialog.dart';
 /// (Idle <-> Eating).
 class PetComponent extends SpriteAnimationGroupComponent<PetAction>
     with
-        HasGameReference<MathPetGame>,
+        HasGameReference<SumBuddyGame>,
         FlameBlocListenable<PetCubit, PetState>,
         TapCallbacks {
   PetComponent({

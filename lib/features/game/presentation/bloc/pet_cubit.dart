@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:math_pet/features/game/presentation/bloc/pet_state.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/pet_state.dart';
 
 /// Manages the state of the Pet (Hunger, Happiness, Actions).
 class PetCubit extends HydratedCubit<PetState> {

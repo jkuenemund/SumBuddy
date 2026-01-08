@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:math_pet/features/math/domain/entities/math_problem.dart';
+import 'package:sum_buddy/features/math/domain/entities/math_problem.dart';
 
 enum MathStatus { initial, problemLoaded, success, failure }
 

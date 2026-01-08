@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:math_pet/features/math/presentation/cubit/math_cubit.dart';
-import 'package:math_pet/features/math/presentation/cubit/math_state.dart';
+import 'package:sum_buddy/features/math/presentation/cubit/math_cubit.dart';
+import 'package:sum_buddy/features/math/presentation/cubit/math_state.dart';
 
 /// A Dialog that presents a randomized Math Problem.
 /// Returns `true` if solved correctly, `false` otherwise.

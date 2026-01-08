@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:math_pet/features/game/presentation/bloc/interaction_cubit.dart';
-import 'package:math_pet/features/game/presentation/bloc/interaction_state.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/interaction_cubit.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/interaction_state.dart';
 
 class PetActionBar extends StatelessWidget {
   const PetActionBar({super.key});

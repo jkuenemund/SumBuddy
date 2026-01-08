@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:math_pet/app.dart';
+import 'package:sum_buddy/app.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<void> main() async {
@@ -10,5 +10,5 @@ Future<void> main() async {
       (await getApplicationDocumentsDirectory()).path,
     ),
   );
-  runApp(const MathPetApp());
+  runApp(const SumBuddyApp());
 }

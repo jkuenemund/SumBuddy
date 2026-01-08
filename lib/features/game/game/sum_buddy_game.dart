@@ -2,20 +2,20 @@ import 'dart:async';
 
 import 'package:flame/game.dart';
 import 'package:flame_bloc/flame_bloc.dart';
-import 'package:math_pet/features/game/game/components/food_component.dart';
-import 'package:math_pet/features/game/game/components/pet_component.dart';
-import 'package:math_pet/features/game/game/components/room_component.dart';
-import 'package:math_pet/features/game/presentation/bloc/interaction_cubit.dart';
-import 'package:math_pet/features/game/presentation/bloc/interaction_state.dart';
-import 'package:math_pet/features/game/presentation/bloc/pet_cubit.dart';
-import 'package:math_pet/features/game/presentation/bloc/pet_state.dart';
+import 'package:sum_buddy/features/game/game/components/food_component.dart';
+import 'package:sum_buddy/features/game/game/components/pet_component.dart';
+import 'package:sum_buddy/features/game/game/components/room_component.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/interaction_cubit.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/interaction_state.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/pet_cubit.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/pet_state.dart';
 
 /// The main Game class for Math Pet.
 ///
 /// This class is responsible for the Game Loop and managing
 /// all top-level components.
-class MathPetGame extends FlameGame {
-  MathPetGame({
+class SumBuddyGame extends FlameGame {
+  SumBuddyGame({
     required this.petCubit,
     required this.interactionCubit,
   }) : super(children: []);

@@ -1,5 +1,5 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:math_pet/features/settings/presentation/bloc/settings_state.dart';
+import 'package:sum_buddy/features/settings/presentation/bloc/settings_state.dart';
 
 class SettingsCubit extends HydratedCubit<SettingsState> {
   SettingsCubit() : super(const SettingsState());

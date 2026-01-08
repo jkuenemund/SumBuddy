@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:math_pet/features/game/presentation/bloc/interaction_cubit.dart';
-import 'package:math_pet/features/game/presentation/bloc/pet_cubit.dart';
-import 'package:math_pet/features/game/presentation/bloc/pet_state.dart';
-import 'package:math_pet/features/game/presentation/widgets/math_pet_game_widget.dart';
-import 'package:math_pet/features/game/presentation/widgets/pet_action_bar.dart';
-import 'package:math_pet/features/settings/presentation/bloc/settings_cubit.dart';
-import 'package:math_pet/features/settings/presentation/bloc/settings_state.dart';
-import 'package:math_pet/features/settings/presentation/dialogs/settings_dialog.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/interaction_cubit.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/pet_cubit.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/pet_state.dart';
+import 'package:sum_buddy/features/game/presentation/widgets/sum_buddy_game_widget.dart';
+import 'package:sum_buddy/features/game/presentation/widgets/pet_action_bar.dart';
+import 'package:sum_buddy/features/settings/presentation/bloc/settings_cubit.dart';
+import 'package:sum_buddy/features/settings/presentation/bloc/settings_state.dart';
+import 'package:sum_buddy/features/settings/presentation/dialogs/settings_dialog.dart';
 
 /// The main page for the Game feature.
 class GamePage extends StatelessWidget {
@@ -26,7 +26,7 @@ class GamePage extends StatelessWidget {
           children: [
             // Layer 1: The Game (Flame)
             const Positioned.fill(
-              child: MathPetGameWidget(),
+              child: SumBuddyGameWidget(),
             ),
 
             // Layer 2: Top Bar (Settings)

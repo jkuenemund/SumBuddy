@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:math_pet/features/settings/presentation/bloc/settings_cubit.dart';
-import 'package:math_pet/features/settings/presentation/bloc/settings_state.dart';
+import 'package:sum_buddy/features/settings/presentation/bloc/settings_cubit.dart';
+import 'package:sum_buddy/features/settings/presentation/bloc/settings_state.dart';
 
 class SettingsDialog extends StatelessWidget {
   const SettingsDialog({super.key});

@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:math_pet/features/math/domain/entities/math_problem.dart';
+import 'package:sum_buddy/features/math/domain/entities/math_problem.dart';
 
 /// Generates random math problems.
 class MathGenerator {

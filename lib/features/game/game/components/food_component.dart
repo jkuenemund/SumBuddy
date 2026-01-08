@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flutter/animation.dart';
-import 'package:math_pet/core/assets/asset_registry.dart';
-import 'package:math_pet/features/game/game/math_pet_game.dart';
+import 'package:sum_buddy/core/assets/asset_registry.dart';
+import 'package:sum_buddy/features/game/game/sum_buddy_game.dart';
 
 enum FoodType { cookie, cake, apple }
 
-class FoodComponent extends SpriteComponent with HasGameReference<MathPetGame> {
+class FoodComponent extends SpriteComponent with HasGameReference<SumBuddyGame> {
   FoodComponent({
     required Vector2 position,
     required this.foodType,

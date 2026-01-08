@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:math_pet/features/math/domain/logic/math_generator.dart';
-import 'package:math_pet/features/math/presentation/cubit/math_state.dart';
+import 'package:sum_buddy/features/math/domain/logic/math_generator.dart';
+import 'package:sum_buddy/features/math/presentation/cubit/math_state.dart';
 
 class MathCubit extends Cubit<MathState> {
   MathCubit({MathGenerator? generator})
