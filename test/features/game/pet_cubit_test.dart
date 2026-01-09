@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:math_pet/features/game/presentation/bloc/pet_cubit.dart';
-import 'package:math_pet/features/game/presentation/bloc/pet_state.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/pet_cubit.dart';
+import 'package:sum_buddy/features/game/presentation/bloc/pet_state.dart';
 
 class MockStorage extends Mock implements Storage {}
 

@@ -1,43 +1,91 @@
 import 'dart:math';
+import 'package:sum_buddy/features/math/domain/entities/math_difficulty.dart';
+import 'package:sum_buddy/features/math/domain/entities/math_input_type.dart';
+import 'package:sum_buddy/features/math/domain/entities/math_operation.dart';
 import 'package:sum_buddy/features/math/domain/entities/math_problem.dart';
 
-/// Generates random math problems.
+/// Stateless logic for generating math problems based on difficulty.
 class MathGenerator {
-  final Random _rng = Random();
+  static final _random = Random();
 
-  /// Generates a simple addition problem (Sum <= 20).
-  /// Returns a [MathProblem] with 3 choices (1 Correct, 2 Wrong).
-  MathProblem generateAdditionProblem() {
-    // 1. Generate Logic
-    // a + b = c
-    // simple constraint: a,b > 0, sum <= 20
-    final a = _rng.nextInt(10) + 1; // 1-10
-    final b = _rng.nextInt(10) + 1; // 1-10
-    final solution = a + b;
+  /// Generates a single problem based on the provided difficulty settings.
+  static MathProblem generate(MathDifficulty difficulty) {
+    int a;
+    int b;
+    int solution;
+    String term;
 
-    // 2. Generate Distractors (Wrong Answers)
-    final choices = <int>{solution}; // Set to avoid duplicates via logic
+    switch (difficulty.operation) {
+      case MathOperation.addition:
+        a =
+            _random.nextInt(difficulty.maxOperand - difficulty.minOperand + 1) +
+            difficulty.minOperand;
+        b =
+            _random.nextInt(difficulty.maxOperand - difficulty.minOperand + 1) +
+            difficulty.minOperand;
+        solution = a + b;
+        term = '$a + $b';
 
-    while (choices.length < 3) {
-      // Create a wrong answer close to the real solution (+- 1 to 3)
-      final offset = _rng.nextInt(3) + 1; // 1-3
-      final sign = _rng.nextBool() ? 1 : -1;
-      final wrong = solution + (offset * sign);
+      case MathOperation.subtraction:
+        a =
+            _random.nextInt(difficulty.maxOperand - difficulty.minOperand + 1) +
+            difficulty.minOperand;
+        b =
+            _random.nextInt(difficulty.maxOperand - difficulty.minOperand + 1) +
+            difficulty.minOperand;
 
-      // Ensure positive and typically non-zero for simplicity
-      // (though 0 is valid math)
-      if (wrong >= 0) {
-        choices.add(wrong);
-      }
+        // Swap if we need positive results and b > a
+        if (difficulty.ensurePositiveResult && b > a) {
+          final temp = a;
+          a = b;
+          b = temp;
+        }
+
+        solution = a - b;
+        term = '$a - $b';
+
+      case MathOperation.multiplication:
+        a =
+            _random.nextInt(difficulty.maxOperand - difficulty.minOperand + 1) +
+            difficulty.minOperand;
+        b =
+            _random.nextInt(difficulty.maxOperand - difficulty.minOperand + 1) +
+            difficulty.minOperand;
+        solution = a * b;
+        term = '$a × $b';
+
+      case MathOperation.division:
+        // For division, we generate the result (res) and the divisor (b)
+        // then calculate a = b * res
+        final res =
+            _random.nextInt(difficulty.maxOperand - difficulty.minOperand + 1) +
+            difficulty.minOperand;
+        b =
+            _random.nextInt(difficulty.maxOperand - difficulty.minOperand + 1) +
+            difficulty.minOperand;
+        a = res * b;
+        solution = res;
+        term = '$a ÷ $b';
     }
 
-    // 3. Shuffle choices
-    final choicesList = choices.toList()..shuffle(_rng);
+    // Generate Distractors (Wrong Answers) for Multiple Choice
+    final choices = <int>[];
+    if (difficulty.inputType == MathInputType.multipleChoice) {
+      choices.add(solution);
+      while (choices.length < 3) {
+        final distractor = solution + _random.nextInt(7) - 3;
+        if (!choices.contains(distractor)) {
+          choices.add(distractor);
+        }
+      }
+      choices.shuffle();
+    }
 
     return MathProblem(
-      term: '$a + $b',
+      term: term,
       solution: solution,
-      choices: choicesList,
+      choices: choices,
+      inputType: difficulty.inputType,
     );
   }
 }

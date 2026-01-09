@@ -1,16 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sum_buddy/features/math/domain/entities/math_difficulty.dart';
 import 'package:sum_buddy/features/math/domain/logic/math_generator.dart';
 import 'package:sum_buddy/features/math/presentation/cubit/math_state.dart';
 
 class MathCubit extends Cubit<MathState> {
-  MathCubit({MathGenerator? generator})
-    : _generator = generator ?? MathGenerator(),
-      super(const MathState());
+  MathCubit() : super(const MathState());
 
-  final MathGenerator _generator;
-
-  void generateProblem() {
-    final problem = _generator.generateAdditionProblem();
+  void generateProblem(MathDifficulty difficulty) {
+    final problem = MathGenerator.generate(difficulty);
     emit(
       state.copyWith(
         status: MathStatus.problemLoaded,
@@ -25,8 +22,6 @@ class MathCubit extends Cubit<MathState> {
     if (answer == state.problem!.solution) {
       emit(state.copyWith(status: MathStatus.success));
     } else {
-      // For now, failure is final for this dialog instance.
-      // In future, we might allow retries or shake animation.
       emit(state.copyWith(status: MathStatus.failure));
     }
   }

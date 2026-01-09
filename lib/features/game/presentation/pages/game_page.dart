@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sum_buddy/features/game/presentation/bloc/interaction_cubit.dart';
 import 'package:sum_buddy/features/game/presentation/bloc/pet_cubit.dart';
 import 'package:sum_buddy/features/game/presentation/bloc/pet_state.dart';
-import 'package:sum_buddy/features/game/presentation/widgets/sum_buddy_game_widget.dart';
 import 'package:sum_buddy/features/game/presentation/widgets/pet_action_bar.dart';
+import 'package:sum_buddy/features/game/presentation/widgets/sum_buddy_game_widget.dart';
 import 'package:sum_buddy/features/settings/presentation/bloc/settings_cubit.dart';
 import 'package:sum_buddy/features/settings/presentation/bloc/settings_state.dart';
 import 'package:sum_buddy/features/settings/presentation/dialogs/settings_dialog.dart';
@@ -31,12 +31,16 @@ class GamePage extends StatelessWidget {
 
             // Layer 2: Top Bar (Settings)
             Positioned(
-              top: 50,
+              top: 20,
               right: 20,
               child: Builder(
                 builder: (context) {
                   return IconButton(
-                    icon: const Icon(Icons.settings, size: 32),
+                    icon: const Icon(
+                      Icons.settings,
+                      size: 32,
+                      color: Colors.white70,
+                    ),
                     onPressed: () => SettingsDialog.show(context),
                   );
                 },
@@ -45,7 +49,7 @@ class GamePage extends StatelessWidget {
 
             // Layer 3: Debug Info (Conditional)
             Positioned(
-              top: 50,
+              top: 25,
               left: 20,
               child: BlocBuilder<SettingsCubit, SettingsState>(
                 builder: (context, settingsState) {
@@ -72,9 +76,9 @@ class GamePage extends StatelessWidget {
               ),
             ),
 
-            // Layer 4: Action Bar (Bottom)
+            // Layer 4: Action Bar (Top Center)
             const Positioned(
-              bottom: 20,
+              top: 20,
               left: 0,
               right: 0,
               child: Center(

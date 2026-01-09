@@ -26,13 +26,11 @@ class SumBuddyGame extends FlameGame {
 
   @override
   Future<void> onLoad() async {
-    // 1. Add Background
-    await add(RoomComponent());
-
-    // 2. Setup Pet
+    // 1. Setup components
+    final room = RoomComponent();
     pet = PetComponent();
 
-    // 3. Add Pet with Bloc Providers
+    // 2. Add with Bloc Providers
     await add(
       FlameMultiBlocProvider(
         providers: [
@@ -41,7 +39,10 @@ class SumBuddyGame extends FlameGame {
             value: interactionCubit,
           ),
         ],
-        children: [pet],
+        children: [
+          room,
+          pet,
+        ],
       ),
     );
 

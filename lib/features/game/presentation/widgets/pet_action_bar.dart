@@ -9,43 +9,40 @@ class PetActionBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 30),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            decoration: BoxDecoration(
-              color: Colors.black.withAlpha(120), // Darker for better contrast
-              borderRadius: BorderRadius.circular(30),
-              border: Border.all(
-                color: Colors.white.withAlpha(40),
-              ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(30),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+          decoration: BoxDecoration(
+            color: Colors.black.withAlpha(120), // Darker for better contrast
+            borderRadius: BorderRadius.circular(30),
+            border: Border.all(
+              color: Colors.white.withAlpha(40),
             ),
-            child: BlocBuilder<InteractionCubit, InteractionState>(
-              builder: (context, state) {
-                return Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _ToolButton(
-                      icon: Icons.cookie,
-                      label: 'Füttern',
-                      tool: GameTool.feed,
-                      isSelected: state.selectedTool == GameTool.feed,
-                    ),
-                    const SizedBox(width: 20),
-                    _ToolButton(
-                      icon: Icons.videogame_asset,
-                      label: 'Spielen',
-                      tool: GameTool.play,
-                      isSelected: state.selectedTool == GameTool.play,
-                    ),
-                  ],
-                );
-              },
-            ),
+          ),
+          child: BlocBuilder<InteractionCubit, InteractionState>(
+            builder: (context, state) {
+              return Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _ToolButton(
+                    icon: Icons.cookie,
+                    label: 'Füttern',
+                    tool: GameTool.feed,
+                    isSelected: state.selectedTool == GameTool.feed,
+                  ),
+                  const SizedBox(width: 15),
+                  _ToolButton(
+                    icon: Icons.videogame_asset,
+                    label: 'Spielen',
+                    tool: GameTool.play,
+                    isSelected: state.selectedTool == GameTool.play,
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ),

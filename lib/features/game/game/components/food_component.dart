@@ -8,7 +8,8 @@ import 'package:sum_buddy/features/game/game/sum_buddy_game.dart';
 
 enum FoodType { cookie, cake, apple }
 
-class FoodComponent extends SpriteComponent with HasGameReference<SumBuddyGame> {
+class FoodComponent extends SpriteComponent
+    with HasGameReference<SumBuddyGame> {
   FoodComponent({
     required Vector2 position,
     required this.foodType,

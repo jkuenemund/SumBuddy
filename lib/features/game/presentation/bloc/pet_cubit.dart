@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:sum_buddy/features/math/domain/entities/math_difficulty.dart';
 import 'package:sum_buddy/features/game/presentation/bloc/pet_state.dart';
 
 /// Manages the state of the Pet (Hunger, Happiness, Actions).
@@ -36,6 +37,62 @@ class PetCubit extends HydratedCubit<PetState> {
       state.copyWith(
         hunger: newHunger,
         action: newAction,
+      ),
+    );
+  }
+
+  /// Called when a math problem is solved correctly.
+  void onMathSolved(MathDifficulty level) {
+    final nextStreaks = Map<String, int>.from(state.activeStreaks);
+    final nextProficiency = Map<String, int>.from(state.proficiencyPoints);
+
+    final currentStreak = (nextStreaks[level.id] ?? 0) + 1;
+
+    if (currentStreak >= level.streakTarget) {
+      nextStreaks[level.id] = 0;
+      nextProficiency[level.id] = (nextProficiency[level.id] ?? 0) + 1;
+    } else {
+      nextStreaks[level.id] = currentStreak;
+    }
+
+    emit(
+      state.copyWith(
+        totalGlobalPoints: state.totalGlobalPoints + 10,
+        activeStreaks: nextStreaks,
+        proficiencyPoints: nextProficiency,
+        frustrationCount: 0, // Reset frustration on success
+      ),
+    );
+  }
+
+  /// Called when a math problem is answered incorrectly.
+  void onMathError(MathDifficulty level) {
+    final nextStreaks = Map<String, int>.from(state.activeStreaks);
+    nextStreaks[level.id] = 0; // Reset streak on error
+
+    emit(
+      state.copyWith(
+        activeStreaks: nextStreaks,
+        frustrationCount: state.frustrationCount + 1,
+      ),
+    );
+  }
+
+  /// DEBUG: Manually set proficiency points for a level.
+  void setProficiencyPoints(String levelId, int points) {
+    final nextProficiency = Map<String, int>.from(state.proficiencyPoints);
+    nextProficiency[levelId] = points;
+    emit(state.copyWith(proficiencyPoints: nextProficiency));
+  }
+
+  /// DEBUG: Reset all progress stats.
+  void resetProgress() {
+    emit(
+      state.copyWith(
+        totalGlobalPoints: 0,
+        proficiencyPoints: {},
+        activeStreaks: {},
+        frustrationCount: 0,
       ),
     );
   }
